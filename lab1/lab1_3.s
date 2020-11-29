@@ -1,0 +1,20 @@
+.text               #Include the allignment at the program just by putting 
+    .globl __start  #0x00 at the right place.
+__start:
+    lw $t0, words  + 0
+    lhu $t1, half + 0
+    lbu	$t2, array_of_bytes + 12
+    lw $t3, words + 0
+    li $v0, 0xa
+    syscall
+
+
+
+
+.data
+.align 0
+array_of_bytes: .byte 0x01, 0x02, 0x03, 0x04, 0x05, 0x00, 0x81, 0x82, 0x83, 0x84
+          half: .half 0x6677
+         words: .word 0x12345678, 0x87654321
+         
+matrix_of_bytes: .byte 0x01, 0x02, 0x03, 0x04, 0x05, 0x00, 0x77, 0x66, 0x81, 0x82, 0x83, 0x84
